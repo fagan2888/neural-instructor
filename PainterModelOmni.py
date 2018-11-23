@@ -35,7 +35,7 @@ class InstEncoder(nn.Module):
         hiddens = torch.stack(hiddens, dim=1) # B x seq x rnn_size
         output = []
         for i in range(inst.size(0)):
-            ix = torch.nonzero(inst[0].data).squeeze()[-1]
+            ix = torch.nonzero(inst[i].data).squeeze()[-1]
             output.append(hiddens[i, ix])
         output = torch.stack(output, dim=0)
         return output
